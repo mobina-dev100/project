@@ -1,0 +1,10 @@
+.grid{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+}
+
+.grid > div {
+    border: solid 2px blue;
+    padding: 8px;
+    text-align: center;
+}

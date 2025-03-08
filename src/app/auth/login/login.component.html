@@ -1,0 +1,29 @@
+<div>
+
+    <div class="box" [title]="titleText">
+        <span>نام کاربری</span>
+        <input type="text" [(ngModel)]="username" >
+        <p>{{username}}</p>
+        
+    </div>
+
+    <div class="box">
+        <span>رمز عبور</span>
+        <input type="password" [(ngModel)]="password" >
+        {{password}}
+    </div>
+
+    @if(username.length >= 4 && password.length >= 8){
+        
+            <div>
+                <button (click)="login()" >ورود</button>
+             </div>
+        
+
+    } @else {
+        <p>
+            لطفا فرم را تکمیل کنید
+        </p>
+    }
+
+</div>

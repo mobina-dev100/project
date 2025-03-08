@@ -1,0 +1,9 @@
+.menu{
+    display: flex;
+    background-color: aqua;
+    padding: 8px;
+}
+.menu > div {
+    margin: 0 10px;
+    cursor: pointer;
+}
