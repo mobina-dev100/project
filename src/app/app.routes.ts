@@ -7,7 +7,13 @@ import { DashboardComponent } from './panel/dashboard/dashboard.component';
 export const routes: Routes = [
     {
         path: '',
-        component: AppComponent
+        component: AppComponent,
+        children:[
+            {
+                path: '',
+                loadComponent: ()=>import('./front/home/home.component').then(c => c.HomeComponent)
+            }
+        ]
         
     },
     {
