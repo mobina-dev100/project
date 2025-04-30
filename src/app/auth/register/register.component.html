@@ -1,1 +1,32 @@
-<p>register works!</p>
+
+<div class="m-auto w-full flex-col flex justify-center flex-wrap content-center items-center ">
+    <form [formGroup]="form">
+
+    
+    <div class="flex my-2">
+        <p> نام و نامخانوادگی :</p>
+        <input formControlName="name" class="border-[2px] outlin-0 ms-[4px] p-1" type="text" placeholder="">
+     </div>
+     <div class="flex my-2">
+        <p>شماره تلفن :</p>
+        <input formControlName="price" class="border-[2px] outlin-0 ms-[4px] p-1" type="text" placeholder="">
+     </div>
+     <div class="flex my-2">
+        <p>ایمیل:</p>
+        <input formControlName="stock" class="border-[2px] outlin-0 ms-[4px] p-1" type="text" placeholder="">
+     </div>
+     <div class="flex my-2">
+        <p>رمز ورود :</p>
+        <input formControlName="stock" class="border-[2px] outlin-0 ms-[4px] p-1" type="text" placeholder="">
+     </div>
+     <div>
+        {{form.valid}}
+        <!-- @if (form.valid) {
+            <button class="border-2" (click)="addProduct()">ثبت کنید.</button>
+
+        } -->
+        <button class="border-2 bg-green-300" [ngClass]="{'bg-white': !form.valid}" [disabled]="!form.valid" (click)="login()">ثبت نام</button>
+
+     </div> 
+    </form>   
+</div>

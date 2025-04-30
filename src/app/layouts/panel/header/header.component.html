@@ -1,8 +1,6 @@
-<div class="menu">
-    <div>داشبورد</div>
-    <div> محصولات</div>
-    <div> سفارشات</div>
-    <div> پرداخت ها</div>
+<div class="menu bg-gray-300 border-b flex justify-between">
+    <div class="cursor-pointer" [routerLink]="'/panel/'" >داشبورد</div>
+
     <a [routerLink]="['/logout']"  >
         <div>  خروج</div>
     </a>

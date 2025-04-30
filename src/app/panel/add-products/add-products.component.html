@@ -1,0 +1,27 @@
+<div class="m-auto w-full flex-col flex justify-center flex-wrap content-center items-center ">
+    <form [formGroup]="form">
+
+    
+    <div class="flex">
+        <p>اسم محصول:</p>
+        <input formControlName="name" class="border-[2px] outlin-0 ms-[4px] p-1" type="text" placeholder="اسم محصول را وارد نماید.">
+     </div>
+     <div class="flex">
+        <p>قیمت محصول :</p>
+        <input formControlName="price" class="border-[2px] outlin-0 ms-[4px] p-1" type="text" placeholder="قیمت محصول را وارد نماید.">
+     </div>
+     <div class="flex">
+        <p>موجودی انبار :</p>
+        <input formControlName="stock" class="border-[2px] outlin-0 ms-[4px] p-1" type="text" placeholder="تعداد محصول را وارد نماید.">
+     </div>
+     <div>
+        {{form.valid}}
+        <!-- @if (form.valid) {
+            <button class="border-2" (click)="addProduct()">ثبت کنید.</button>
+
+        } -->
+        <button class="border-2 bg-green-300" [ngClass]="{'bg-white': !form.valid}" [disabled]="!form.valid" (click)="addProduct()">ثبت کنید.</button>
+
+     </div> 
+    </form>   
+</div>

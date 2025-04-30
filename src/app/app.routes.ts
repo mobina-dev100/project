@@ -1,8 +1,7 @@
 import { Routes } from '@angular/router';
-import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
 import { LogoutComponent } from './auth/logout/logout.component';
-import { HomeComponent } from './front/home/home.component';
+import { RegisterComponent } from './auth/register/register.component';
 import { MasterComponent } from './layouts/front/master/master.component';
 import { MasterComponent as panelMaster } from './layouts/panel/master/master.component';
 
@@ -23,10 +22,6 @@ export const routes: Routes = [
                 path: 'about-us',
                 loadComponent: ()=>import('./front/about-us/about-us.component').then(c => c.AboutUsComponent)
             },
-            {
-                path:'contact',
-                component:HomeComponent
-            }
         ]
         
     },
@@ -38,6 +33,13 @@ export const routes: Routes = [
                 path: '',
                 loadComponent: ()=>import('./panel/dashboard/dashboard.component').then(c => c.DashboardComponent)
             },
+            {
+                path: 'products',
+                loadComponent: ()=>import('./panel/products/products.component').then(c => c.ProductsComponent)
+            },{
+                path: 'products/add',
+                loadComponent: ()=>import('./panel/add-products/add-products.component').then(c => c.AddProductsComponent)
+            },
         ]
         
     },
@@ -48,5 +50,9 @@ export const routes: Routes = [
     {
         path:'logout',
         component: LogoutComponent
+    },
+    {
+        path:'register',
+        component: RegisterComponent
     },
 ];
