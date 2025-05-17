@@ -1,1 +1,29 @@
-<p>products works!</p>
+<table class="border p-4">
+    <thead>
+        <td>#</td>
+        <td>id</td>
+        <td>نام محصول</td>
+        <td>قیمت</td>
+        <td>موجودی انبار</td>
+        <td>رنگ </td>
+        <td>عملیات</td>
+    </thead>
+    <tbody>
+        @for (item of data; track $index) {
+            <tr>
+                <td class="border p-1">{{$index + 1}}</td>
+                <td class="border p-1">{{item.id}}</td>
+                <td  class="border p-1">{{item.name}}</td>
+                <td  class="border p-1">{{item.price}}</td>
+                <td  class="border p-1">{{item.stock}}</td>
+                <td  class="border p-1">{{item.color}}</td>
+                <td  class="border p-1">
+                    <button class="bg-red-500 rounded p-2 cursor-pointer" (click)="remove(item.id)">حذف</button>
+                </td>
+            </tr>
+
+        }
+
+    </tbody>
+   
+</table>
