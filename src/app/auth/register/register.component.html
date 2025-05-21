@@ -1,32 +1,48 @@
+<div >
+   <div>
 
-<div class="m-auto w-full flex-col flex justify-center flex-wrap content-center items-center ">
-    <form [formGroup]="form">
+   </div>
+   
 
-    
-    <div class="flex my-2">
-        <p> نام و نامخانوادگی :</p>
-        <input formControlName="name" class="border-[2px] outlin-0 ms-[4px] p-1" type="text" placeholder="">
-     </div>
-     <div class="flex my-2">
-        <p>شماره تلفن :</p>
-        <input formControlName="price" class="border-[2px] outlin-0 ms-[4px] p-1" type="text" placeholder="">
-     </div>
-     <div class="flex my-2">
-        <p>ایمیل:</p>
-        <input formControlName="stock" class="border-[2px] outlin-0 ms-[4px] p-1" type="text" placeholder="">
-     </div>
-     <div class="flex my-2">
-        <p>رمز ورود :</p>
-        <input formControlName="stock" class="border-[2px] outlin-0 ms-[4px] p-1" type="text" placeholder="">
-     </div>
-     <div>
-        {{form.valid}}
-        <!-- @if (form.valid) {
-            <button class="border-2" (click)="addProduct()">ثبت کنید.</button>
+</div>
 
-        } -->
-        <button class="border-2 bg-green-300" [ngClass]="{'bg-white': !form.valid}" [disabled]="!form.valid" (click)="login()">ثبت نام</button>
 
-     </div> 
-    </form>   
+
+<div class="w-full h-screen bg-slate-300 flex justify-center items-center">
+   <div class=" bg-[#fff] w-[500px] h-[400px] shadow-[-1px_-6px_16px_lightgray] felx-col justify-center">
+      <form [formGroup]="form" class="p-2">
+   
+      
+         <div class="max-w-[300px] m-auto">
+            <div class="flex my-2">
+               <input formControlName="name" class="border-[2px] w-full outlin-0 ms-[4px] p-1" type="text" placeholder="نام و نام خانوادگی">
+            </div>
+            <div class="flex my-2">
+               <input formControlName="phone" class="border-[2px] w-full outlin-0 ms-[4px] p-1" type="text" placeholder="شماره تلفن">
+            </div>
+            <div class="flex my-2">
+               <input formControlName="email" class="border-[2px] w-full outlin-0 ms-[4px] p-1" type="text" placeholder="ایمیل">
+            </div>
+            <div class="flex my-2 items-center justify-between border-[2px]">
+             <div>
+                <input formControlName="password" id="eye" class="w-full outlin-0 ms-[4px] p-1" type="password" placeholder="رمز ورود">
+             </div>
+             <div class="self-end text-left">
+              <button  class="" (click)="toggle()"><img id="img-eye"  src="/img/eye.svg"></button>
+           </div>
+          
+            </div>
+            <div>
+              <!-- {{form.valid}}-->
+               <!-- @if (form.valid) {
+                   <button class="border-2" (click)="addProduct()">ثبت کنید.</button>
+        
+               } -->
+               <button class="border-2 bg-green-300 p-2" [ngClass]="{'bg-white': !form.valid}" [disabled]="!form.valid" (click)="login()">ثبت نام</button>
+        
+            </div> 
+         </div>
+  
+      </form>   
+   </div>
 </div>

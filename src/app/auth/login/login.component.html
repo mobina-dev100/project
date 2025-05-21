@@ -1,22 +1,22 @@
-<div>
+<div class="p-2 mx-4 bg-sky-300">
 
     <div class="box" [title]="titleText">
         <span>نام کاربری</span>
-        <input type="text" class="input" [(ngModel)]="username" >
-        <p>{{username}}</p>
+        <input type="text" class="input p-2 border rounded-lg" [(ngModel)]="username" >
+       
         
     </div>
 
     <div class="box">
         <span>رمز عبور</span>
-        <input type="password" class="input" [(ngModel)]="password" >
-        {{password}}
+        <input type="password" class="input p-2 border rounded-lg" [(ngModel)]="password" >
+       
     </div>
 
     @if(username.length >= 4 && password.length >= 8){
         
             <div>
-                <button (click)="login()" >ورود</button>
+                <button (click)="login()" class="p-2 border rounded-lg border-stone-700 min-w-[70px]" >ورود</button>
              </div>
         
 
