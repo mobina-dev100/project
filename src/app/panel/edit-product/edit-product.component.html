@@ -1,4 +1,5 @@
 <div class="m-auto w-full flex-col flex justify-center flex-wrap content-center items-center ">
+    <h1>ویرایش محصول</h1>
     <form [formGroup]="form">
 
     
@@ -19,18 +20,8 @@
       <input formControlName="color" type="color" class="border-[2px] outlin-0 ms-[4px] p-1"  placeholder="تعداد محصول را وارد نماید.">
    </div>
 
-   <div class="flex">
-      <p> عکس محصول  :</p>
-      <input (change)="onFileSelected($event)" accept="image/png, image/gif, image/jpeg" type="file" class="border-[2px] outlin-0 ms-[4px] p-1"  >
-   </div>
-
      <div>
-       
-        <!-- @if (form.valid) {
-            <button class="border-2" (click)="addProduct()">ثبت کنید.</button>
-
-        } -->
-        <button class="border-2 bg-green-300" [ngClass]="{'bg-white': !form.valid}" [disabled]="!form.valid" (click)="addProduct()">ثبت کنید.</button>
+        <button class="border-2 bg-green-300" [ngClass]="{'bg-white': !form.valid}" [disabled]="!form.valid" (click)="editProduct()">ذخیره تغییرات.</button>
 
      </div> 
     </form>   

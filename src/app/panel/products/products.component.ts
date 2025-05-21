@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 
 import { ProductsService } from '../../services/products.service';
 import { ToastrService } from 'ngx-toastr';
+import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-products',
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss'
 })
@@ -38,4 +39,5 @@ export class ProductsComponent {
       }
     })
   }
+
 }

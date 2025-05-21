@@ -11,9 +11,16 @@ export class ProductsService {
   getAll(){
     return this.http.get('http://localhost:8000/api/products')
   }
+  getById(id:number){
+    return this.http.get('http://localhost:8000/api/product/' + id)
+  }
 
   addProduct(body:any){
     return this.http.post('http://localhost:8000/api/products',body)
+  }
+
+  updateProduct(body:any){
+    return this.http.post('http://localhost:8000/api/products/update',body)
   }
 
   removeProduct(id:string | number){

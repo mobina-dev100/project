@@ -18,7 +18,17 @@
                 <td  class="border p-1">{{item.stock}}</td>
                 <td  class="border p-1">{{item.color}}</td>
                 <td  class="border p-1">
+                    <div>
+                        @for (media of item.media; track $index) {
+                            <div>
+                                <img [src]="'http://localhost:8000/storage/' + media.path" />
+                            </div>
+                        }
+                    </div>
+                </td>
+                <td  class="border p-1">
                     <button class="bg-red-500 rounded p-2 cursor-pointer" (click)="remove(item.id)">حذف</button>
+                    <button class="bg-blue-500 rounded p-2 cursor-pointer" [routerLink]="['/panel/products/edit/' + item.id]" >ویرایش</button>
                 </td>
             </tr>
 

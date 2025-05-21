@@ -1,62 +1,73 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ProductsService } from '../../services/products.service';
 import { ToastrService } from 'ngx-toastr';
 import { MediaService } from '../../services/media.service';
+import { ActivatedRoute } from '@angular/router';
 @Component({
-  selector: 'app-add-products',
+  selector: 'app-edit-products',
   imports: [ReactiveFormsModule, CommonModule],
-  templateUrl: './add-products.component.html',
-  styleUrl: './add-products.component.scss'
+  templateUrl: './edit-product.component.html',
+  styleUrl: './edit-product.component.scss'
 })
-export class AddProductsComponent {
+export class EditProductsComponent implements OnInit {
 
-  form = new FormGroup({
+  form = new FormGroup({ 
     "name": new FormControl('',[Validators.minLength(5), Validators.maxLength(40)]),
     "price": new FormControl('',[Validators.required]),
     "stock": new FormControl<number>(0,[Validators.required]),
     "color": new FormControl('',[Validators.required]),
-    "file": new FormControl(),
+    "id": new FormControl(),
   })
 
 
+  productId = 0
 
   constructor(
     private productService: ProductsService,
     private mediaService: MediaService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private route: ActivatedRoute
     ){}
 
 
   ngOnInit(){
-    this.form.patchValue({name:'کفش مجلسی'})
+    this.getData();
+    
+  }
+
+  getData(){
+    this.route.params.subscribe({next:(res:any)=>{
+      this.productId = res.id;
+      this.getProduct()
+    }})
   }
 
 
-  addProduct(){
+  getProduct(){
+    this.productService.getById(this.productId).subscribe({
+      next: (res:any)=>{
+        console.log(res);
+        
+        this.form.patchValue({
+          name:res.data.name,
+          stock:res.data.stock,
+          color:res.data.color,
+          id:this.productId,
+          price:res.data.price
+        })
+      }
+    })
+  }
+
+  editProduct(){
     let copy = this.form.value;
     copy.stock = Number(copy.stock);
 
-    this.productService.addProduct(this.form.value).subscribe({
+    this.productService.updateProduct(this.form.value).subscribe({
       next: (res:any)=>{
-
-
-        const formData = new FormData();
-        formData.append('file',this.form.get('file')?.value);
-        formData.append('product_id',res.id);
-
-
-        this.mediaService.upload(formData).subscribe({
-          next: (mediaRes:any)=>{
-            this.showSuccess()
-          },
-          error: (e:any)=>{
-        
-          }
-        })
-        
-        
+        this.showSuccess()
       },
 
       error: (e:any)=>{
@@ -68,7 +79,7 @@ export class AddProductsComponent {
 
   showSuccess() {
     let title = 'عملیات موفقیت آمیز بود'
-    let msg = 'محصول جدید اضافه شد'
+    let msg = 'محصول  ویرایش شد'
     this.toastr.success(title, msg);
   }
 
@@ -78,13 +89,5 @@ export class AddProductsComponent {
     this.toastr.error(title, msg);
   }
 
-  onFileSelected(event: Event) {
-    const input = event.target as HTMLInputElement;
-    if (!input.files?.length) {
-      this.form.get('file')?.setValue(null);
-      return;
-    }
-    const file = input.files[0];
-    this.form.get('file')?.setValue(file);
-  }
+
 }

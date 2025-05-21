@@ -40,6 +40,10 @@ export const routes: Routes = [
                 path: 'products/add',
                 loadComponent: ()=>import('./panel/add-products/add-products.component').then(c => c.AddProductsComponent)
             },
+            {
+                path: 'products/edit/:id',
+                loadComponent: ()=>import('./panel/edit-product/edit-product.component').then(c => c.EditProductsComponent)
+            },
         ]
         
     },
